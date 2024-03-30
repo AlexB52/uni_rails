@@ -1,25 +1,10 @@
 # UniRails
 
-This library allows you to create rails apps within a single ruby file. This is useful for small personal CRUD apps or for education. This library helps writers to develop simple Gists alongside articles or books to illustrate the concept they aim to teach. There is often no point in initializing a full rails structure to explain simple ideas, and the library allows users to copy a ruby file and have a working rails app where all the components are located in a single file.
+UniRails is designed to streamline the process of creating Ruby on Rails applications within a single Ruby file. This approach is ideal for small personal CRUD (Create, Read, Update, Delete) applications or educational purposes, offering a simplified method for demonstrating Rails concepts.
 
-Ruby on Rails can now have single-file apps.
+Our goal is to facilitate educators and writers in crafting concise, illustrative examples for articles or books. Traditional Rails applications require a complex structure even for demonstrating basic concepts, which can be cumbersome and unnecessary. Our library addresses this issue by enabling the quick replication of a Ruby file to instantiate a fully operational Rails app, consolidating all essential components into one file.
 
-
-## Roadmap
-
-Current railties and engine supported. Please help us support more of them
-
-- [X] action_controller
-- [X] active_record
-- [ ] active_model/railtie
-- [ ] active_job/railtie
-- [ ] active_storage/engine
-- [ ] action_mailer/railtie
-- [ ] action_mailbox/engine
-- [ ] action_text/engine
-- [ ] action_view/railtie
-- [ ] action_cable/engine
-
+Embrace the convenience of single-file Rails applications with our library, where simplicity meets functionality.
 
 ## Installation & Usage
 
@@ -38,6 +23,22 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/uni_rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/uni_rails/blob/main/CODE_OF_CONDUCT.md).
+
+### Roadmap
+
+We would like to support all railties and engines. Please help us support more of them
+
+- [X] action_controller
+- [X] active_record
+- [ ] active_model/railtie
+- [ ] active_job/railtie
+- [ ] active_storage/engine
+- [ ] action_mailer/railtie
+- [ ] action_mailbox/engine
+- [ ] action_text/engine
+- [ ] action_view/railtie
+- [ ] action_cable/engine
+
 
 ## License
 
