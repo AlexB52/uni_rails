@@ -1,24 +1,33 @@
 # UniRails
 
-TODO: Delete this and the text below, and describe your gem
+This library allows you to create rails apps within a single ruby file. This is useful for small personal CRUD apps or for education. This library helps writers to develop simple Gists alongside articles or books to illustrate the concept they aim to teach. There is often no point in initializing a full rails structure to explain simple ideas, and the library allows users to copy a ruby file and have a working rails app where all the components are located in a single file.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/uni_rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ruby on Rails can now have single-file apps.
 
-## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+## Roadmap
 
-Install the gem and add to the application's Gemfile by executing:
+Current railties and engine supported. Please help us support more of them
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+- [X] action_controller
+- [X] active_record
+- [ ] active_model/railtie
+- [ ] active_job/railtie
+- [ ] active_storage/engine
+- [ ] action_mailer/railtie
+- [ ] action_mailbox/engine
+- [ ] action_text/engine
+- [ ] action_view/railtie
+- [ ] action_cable/engine
 
-If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+## Installation & Usage
 
-## Usage
+See some examples of how the UniRails library can be used
 
-TODO: Write usage instructions here
+-  [json api](/examples/json_api.rb)
+-  [todo app](/examples/todos.rb)
+-  [hotwire](/examples/hotwire.rb)
 
 ## Development
 
