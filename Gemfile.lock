@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    uni_rails (0.2.1)
+    uni_rails (0.2.2)
       rails (~> 7.1)
 
 GEM
