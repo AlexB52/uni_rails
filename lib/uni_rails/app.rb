@@ -1,6 +1,6 @@
 # Pick the frameworks you want:
 
-# require "active_model/railtie"
+require "active_model/railtie"
 # require "active_job/railtie"
 require "active_record/railtie"
 # require "active_storage/engine"
@@ -15,6 +15,8 @@ require "action_view/testing/resolvers"
 
 module UniRails
   class App < Rails::Application
+    config.load_defaults 7.1
+
     config.eager_load = true
     config.logger = Logger.new(STDOUT)
     config.log_level = :debug

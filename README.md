@@ -30,7 +30,7 @@ We would like to support all railties and engines. Please help us support more o
 
 - [X] action_controller
 - [X] active_record
-- [ ] active_model/railtie
+- [X] active_model/railtie
 - [ ] active_job/railtie
 - [ ] active_storage/engine
 - [ ] action_mailer/railtie
