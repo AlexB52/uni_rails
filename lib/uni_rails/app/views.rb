@@ -12,9 +12,9 @@ module UniRails
             <%= csrf_meta_tags %>
             <%= csp_meta_tag %>
 
-            <%= mono_rails_css_stylesheet %>
-            <%= mono_rails_import_map_tag %>
-            <%= mono_rails_javascript_script %>
+            <%= uni_rails_css_stylesheet %>
+            <%= uni_rails_import_map_tag %>
+            <%= uni_rails_javascript_script %>
           </head>
 
           <body>
