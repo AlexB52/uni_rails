@@ -52,7 +52,11 @@ end
 
 # CONTROLLERS
 
-class TodosController < ActionController::Base
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :null_session
+end
+
+class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy, :complete]
 
   def index
