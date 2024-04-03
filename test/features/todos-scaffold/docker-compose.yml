@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  uni_rails:
+    build: .
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - .:/usr/src/app
+    command: ruby app.rb

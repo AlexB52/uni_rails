@@ -9,3 +9,4 @@
 examples/*.sqlite*
 **/*.sqlite*
 log/*
+test/features/**/uni_rails.gem
