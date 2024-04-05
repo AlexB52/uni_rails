@@ -223,6 +223,7 @@ RUBY
 
 UniRails::App.configure do
   config.log_level = :error
+  config.hosts << ENV['APP_HOST']
 end
 
 UniRails.run(Port: 3000)
