@@ -1,6 +1,6 @@
 FROM ruby:3.3.0-slim-bullseye
 
-ARG BUILD_PACKAGES="build-essential git libvips pkg-config sqlite3 libsqlite3-dev"
+ARG BUILD_PACKAGES="build-essential git curl libvips pkg-config sqlite3 libsqlite3-dev"
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \

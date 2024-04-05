@@ -7,4 +7,17 @@ services:
       - 127.0.0.1:3000:3000
     volumes:
       - .:/usr/src/app
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 2s
+      timeout: 1s
+      retries: 3
     command: ruby app.rb
+  test:
+    image: ruby:3.3.0-slim-bullseye
+    volumes:
+      - .:/app
+    depends_on:
+      uni_rails:
+        condition: service_healthy
+    command: ruby /app/app_test.rb
