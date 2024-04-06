@@ -31,14 +31,48 @@ class TestNewTodos < Minitest::Test
     assert_text 'New todo'
 
     fill_in 'Name', with: 'Buy milk'
-    click_on 'Create'
-
+    click_on 'Create Todo'
     assert_text 'Todo was successfully created.'
+
+    click_on 'Edit this todo'
+    fill_in 'Name', with: 'Buy milk (updated)'
+    click_on 'Update Todo'
+    assert_text 'Buy milk (updated)'
+    assert_text 'Todo was successfully updated.'
+
+    click_on 'Destroy this todo'
+    assert_text 'Todo was successfully destroyed.'
+
+    assert_equal '/todos', page.current_path
+  end
+
+  def test_multiple_todos
+    skip
+    create_todo(name: 'Buy Shampoo')
+    create_todo(name: 'Buy Timtam')
   end
 
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
+  end
+
+  private
+
+  def cleanup_todos
+    visit '/'
+    until (links = all('a', text: 'Show this todo')).empty? do
+      links.first.click
+      click_on 'Destroy this todo'
+      assert_text 'Todo was successfully destroyed.'
+    end
+  end
+
+  def create_todo(name:)
+    visit '/todos/new'
+    fill_in 'Name', with: name
+    click_on 'Create'
+    assert_text 'Todo was successfully created.'
   end
 end
 
