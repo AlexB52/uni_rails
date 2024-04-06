@@ -19,13 +19,13 @@ services:
   test:
     build: .
     volumes:
-      - .:/app
+      - .:/usr/src/app
     depends_on:
       uni_rails:
         condition: service_healthy
       selenium:
         condition: service_healthy
-    command: ruby /app/app_test.rb
+    command: ruby app_test.rb
   selenium:
     image: selenium/standalone-chrome:latest
     ports:
