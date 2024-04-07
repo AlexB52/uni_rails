@@ -1,4 +1,5 @@
 require "uni_rails"
+require "jbuilder"
 require "sqlite3"
 require "rack/handler/puma"
 
