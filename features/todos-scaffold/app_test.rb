@@ -5,6 +5,8 @@ require "selenium-webdriver"
 require "minitest/autorun"
 require "debug"
 
+APP_HOST = ENV.fetch('APP_HOST')
+
 Capybara.register_driver :selenium_remote_chrome do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   # Add any additional options you need
@@ -18,9 +20,61 @@ Capybara.register_driver :selenium_remote_chrome do |app|
 end
 
 Capybara.default_driver = :selenium_remote_chrome
-Capybara.app_host = "http://uni_rails:3000"
+Capybara.app_host = APP_HOST
 
-class TestNewTodos < Minitest::Test
+class Client
+  def initialize(url)
+    @uri = URI(url)
+  end
+
+  def get(url)
+    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+      yield http.get(url)
+    end
+  end
+
+  def post(url, params)
+    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+      http.post(url, params.to_json, "Content-Type" => "application/json")
+    end
+  end
+
+  def delete(url)
+    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+      http.delete(url)
+    end
+  end
+end
+
+class TestJSONTodos < Minitest::Test
+  def setup
+    @client = Client.new(APP_HOST)
+  end
+
+  def test_create_a_new_todo
+    @client.get('/todos.json') do |response|
+      todos = JSON.parse(response.body)
+      assert_equal 0, todos.length
+    end
+
+    response = @client.post '/todos.json', { todo: { name: 'Buy milk' } }
+    todo = JSON.parse(response.body)
+
+    @client.get('/todos.json') do |response|
+      todos = JSON.parse(response.body)
+      assert_equal 1, todos.length
+    end
+
+    @client.delete("/todos/#{todo['id']}.json")
+
+    @client.get('/todos.json') do |response|
+      todos = JSON.parse(response.body)
+      assert_equal 0, todos.length
+    end
+  end
+end
+
+class TestHTMLTodos < Minitest::Test
   include Capybara::DSL
   include Capybara::Minitest::Assertions
 

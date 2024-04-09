@@ -2,6 +2,7 @@ require "uni_rails"
 require "jbuilder"
 require "sqlite3"
 require "rack/handler/puma"
+require "debug"
 
 ENV['DATABASE_URL'] = "sqlite3:///#{__dir__}/todos-scaffold.sqlite"
 
@@ -32,6 +33,13 @@ end
 
 # CONTROLLERS
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :null_session, unless: :csrf_required?
+
+  private
+
+  def csrf_required?
+    !request.format.json?
+  end
 end
 
 class TodosController < ApplicationController

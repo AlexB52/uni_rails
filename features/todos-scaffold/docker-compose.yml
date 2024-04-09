@@ -20,6 +20,8 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
+    environment:
+      - APP_HOST=http://uni_rails:3000
     depends_on:
       uni_rails:
         condition: service_healthy
