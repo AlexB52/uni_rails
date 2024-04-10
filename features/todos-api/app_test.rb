@@ -13,20 +13,26 @@ class Client
   end
 
   def get(url)
-    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
-      yield http.get(url)
+    start do |http|
+      http.get(url)
     end
   end
 
   def post(url, params)
-    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+    start do |http|
       http.post(url, params.to_json, "Content-Type" => "application/json")
     end
   end
 
   def delete(url)
-    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+    start do |http|
       http.delete(url)
+    end
+  end
+
+  def start
+    Net::HTTP.start(@uri.hostname, @uri.port) do |http|
+      yield http
     end
   end
 end
@@ -37,24 +43,21 @@ class TestJSONTodos < Minitest::Test
   end
 
   def test_create_a_new_todo
-    @client.get('/todos.json') do |response|
-      todos = JSON.parse(response.body)
-      assert_equal 0, todos.length
-    end
+    response = @client.get('/todos.json')
+    todos = JSON.parse(response.body)
+    assert_equal 0, todos.length
 
     response = @client.post '/todos.json', { todo: { name: 'Buy milk' } }
     todo = JSON.parse(response.body)
 
-    @client.get('/todos.json') do |response|
-      todos = JSON.parse(response.body)
-      assert_equal 1, todos.length
-    end
+    response = @client.get('/todos.json')
+    todos = JSON.parse(response.body)
+    assert_equal 1, todos.length
 
     @client.delete("/todos/#{todo['id']}.json")
 
-    @client.get('/todos.json') do |response|
-      todos = JSON.parse(response.body)
-      assert_equal 0, todos.length
-    end
+    response = @client.get('/todos.json')
+    todos = JSON.parse(response.body)
+    assert_equal 0, todos.length
   end
 end
