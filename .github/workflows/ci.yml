@@ -49,6 +49,7 @@ jobs:
         repo:
           - todos-scaffold
           - todos-hotwire
+          - todos-api
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby
