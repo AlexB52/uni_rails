@@ -4,7 +4,7 @@ require "sqlite3"
 require "rack/handler/puma"
 require "debug"
 
-ENV['DATABASE_URL'] = "sqlite3:///#{__dir__}/todos-scaffold.sqlite"
+ENV['DATABASE_URL'] = "sqlite3:///#{__dir__}/database.sqlite"
 
 ActiveRecord::Base.establish_connection
 ActiveRecord::Schema.define do

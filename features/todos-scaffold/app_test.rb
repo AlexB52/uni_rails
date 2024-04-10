@@ -22,6 +22,13 @@ end
 Capybara.default_driver = :selenium_remote_chrome
 Capybara.app_host = APP_HOST
 
+def truncate_tables
+  require "sqlite3"
+  SQLite3::Database.new( "database.sqlite" ) do |db|
+    db.execute("DELETE FROM todos")
+  end
+end
+
 class Client
   def initialize(url)
     @uri = URI(url)
@@ -55,6 +62,7 @@ end
 class TestJSONTodos < Minitest::Test
   def setup
     @client = Client.new(APP_HOST)
+    truncate_tables
   end
 
   def test_create_a_new_todo
@@ -80,6 +88,10 @@ end
 class TestHTMLTodos < Minitest::Test
   include Capybara::DSL
   include Capybara::Minitest::Assertions
+
+  def setup
+    truncate_tables
+  end
 
   def test_create_a_new_todo
     visit "/"

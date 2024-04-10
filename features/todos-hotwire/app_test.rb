@@ -20,9 +20,21 @@ end
 Capybara.default_driver = :selenium_remote_chrome
 Capybara.app_host = "http://uni_rails:3000"
 
+
+def truncate_tables
+  require "sqlite3"
+  SQLite3::Database.new( "database.sqlite" ) do |db|
+    db.execute("DELETE FROM todos")
+  end
+end
+
 class TestNewTodos < Minitest::Test
   include Capybara::DSL
   include Capybara::Minitest::Assertions
+
+  def setup
+    truncate_tables
+  end
 
   def test_create_a_new_todo
     visit "/"

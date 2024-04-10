@@ -4,7 +4,7 @@ require "rack/handler/puma"
 require 'debug'
 require 'sqlite3'
 
-ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-hotwire.sqlite"
+ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/database.sqlite"
 
 ActiveRecord::Base.establish_connection
 ActiveRecord::Schema.define do

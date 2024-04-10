@@ -7,6 +7,13 @@ require "debug"
 
 APP_HOST = ENV.fetch('APP_HOST')
 
+def truncate_tables
+  require "sqlite3"
+  SQLite3::Database.new( "database.sqlite" ) do |db|
+    db.execute("DELETE FROM todos")
+  end
+end
+
 class Client
   def initialize(url)
     @uri = URI(url)
@@ -40,6 +47,7 @@ end
 class TestJSONTodos < Minitest::Test
   def setup
     @client = Client.new(APP_HOST)
+    truncate_tables
   end
 
   def test_create_a_new_todo
