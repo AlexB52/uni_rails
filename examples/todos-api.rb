@@ -1,37 +1,27 @@
-# 1. Initialize the database with
-#     $ ruby todos-api.rb db_setup
+# Run the application
+#   $ ruby todos-api.rb
 
-# 2. Run the application
-#     $ ruby todos-api.rb
+ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-api.sqlite"
 
 require "bundler/inline"
 
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails'#, path: '/Users/alexbarret/projects/uni_rails'
-  gem 'puma'
-  gem 'debug'
+  gem 'uni_rails'
   gem 'sqlite3'
 end
 
 require 'uni_rails'
-require "rack/handler/puma"
-require 'debug'
 require 'sqlite3'
 
-ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-api.sqlite"
-
-if ARGV[0] == 'db_setup'
-  ActiveRecord::Base.establish_connection
-  ActiveRecord::Schema.define do
-    create_table :todos, force: :cascade do |t|
-      t.string :name
-      t.datetime :completed_at
-      t.timestamps
-    end
+ActiveRecord::Base.establish_connection
+ActiveRecord::Schema.define do
+  create_table :todos, force: :cascade do |t|
+    t.string :name
+    t.datetime :completed_at
+    t.timestamps
   end
-  return
 end
 
 UniRails::App.routes.append do

@@ -1,40 +1,28 @@
-# Based on the Hotwire tutorial: https://www.colby.so/posts/turbo-rails-101-todo-list
+# Run the application
+#   $ ruby todos-scaffold.rb
 
-# 1. Initialize the database with
-#     $ ruby todos-scaffold.rb db_setup
-
-# 2. Run the application
-#     $ ruby todos-scaffold.rb
+ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-scaffold.sqlite"
 
 require "bundler/inline"
 
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails'#, path: '/Users/alexbarret/projects/uni_rails'
-  gem 'puma'
-  gem 'debug'
+  gem 'uni_rails'
   gem 'sqlite3'
-  gem 'jbuilder' # jbuilder allows the jbuilder extension in scaffold.
+  gem 'jbuilder' # jbuilder allows the .jbuilder extension for views
 end
 
 require 'uni_rails'
-require "rack/handler/puma"
-require 'debug'
 require 'sqlite3'
 
-ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-scaffold.sqlite"
-
-if ARGV[0] == 'db_setup'
-  ActiveRecord::Base.establish_connection
-  ActiveRecord::Schema.define do
-    create_table :todos, force: :cascade do |t|
-      t.string :name
-      t.datetime :completed_at
-      t.timestamps
-    end
+ActiveRecord::Base.establish_connection
+ActiveRecord::Schema.define do
+  create_table :todos, force: :cascade do |t|
+    t.string :name
+    t.datetime :completed_at
+    t.timestamps
   end
-  return
 end
 
 UniRails::App.routes.append do

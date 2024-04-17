@@ -13,15 +13,27 @@ require_relative "uni_rails/app/views"
 module UniRails
   class Error < StandardError; end
 
+  def self.rackup_handler=(handler)
+    @@rackup_handler = handler
+  end
+
+  def self.rackup_handler
+    @@rackup_handler ||= begin
+      require 'rackup'
+      Rackup::Handler::WEBrick
+    end
+  end
+
   def self.register_view(action, view)
     UniRails::App::Views.instance.views[action] = view
   end
 
   def self.run(**webrick_options)
     App.initialize!
-    # Rackup::Handler::WEBrick.run App, **webrick_options
+    rackup_handler.run App, **webrick_options
     # Rackup::Handler::Falcon.run App, **webrick_options
-    Rack::Handler::Puma.run App, **webrick_options
+    # Rack::Handler::Puma.run App, **webrick_options
+    # Rackup::Handler::WEBrick.run App, **webrick_options
   end
 
   def self.import_maps(dependencies)

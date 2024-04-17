@@ -1,10 +1,7 @@
 require "uni_rails"
 require "jbuilder"
 require "sqlite3"
-require "rack/handler/puma"
 require "debug"
-
-ENV['DATABASE_URL'] = "sqlite3:///#{__dir__}/database.sqlite"
 
 ActiveRecord::Base.establish_connection
 ActiveRecord::Schema.define do
@@ -235,4 +232,4 @@ UniRails::App.configure do
   config.hosts << ENV['APP_HOST']
 end
 
-UniRails.run(Port: 3000)
+UniRails.run(Port: 3000, BindAddress: '0.0.0.0')
