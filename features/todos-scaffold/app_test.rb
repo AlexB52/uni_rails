@@ -10,7 +10,7 @@ APP_HOST = ENV.fetch('APP_HOST')
 Capybara.register_driver :selenium_remote_chrome do |app|
   options = Selenium::WebDriver::Chrome::Options.new
   # Add any additional options you need
-  # options.add_argument('--headless') # Uncomment if you want to run headless mode
+  options.add_argument('--headless') # Uncomment if you want to run headless mode
 
   Capybara::Selenium::Driver.new(app,
     browser: :remote,
