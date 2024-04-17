@@ -7,8 +7,11 @@ require "debug"
 
 APP_HOST = ENV.fetch('APP_HOST')
 
-Capybara.register_driver :remote_browser do |app|
-  options = Selenium::WebDriver::Remote::Driver.new
+Capybara.register_driver :selenium_remote_chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  # Add any additional options you need
+  # options.add_argument('--headless') # Uncomment if you want to run headless mode
+
   Capybara::Selenium::Driver.new(app,
     browser: :remote,
     url: "http://selenium:4444/wd/hub",
@@ -16,7 +19,7 @@ Capybara.register_driver :remote_browser do |app|
   )
 end
 
-Capybara.default_driver = :remote_browser
+Capybara.default_driver = :selenium_remote_chrome
 Capybara.app_host = APP_HOST
 
 def truncate_tables

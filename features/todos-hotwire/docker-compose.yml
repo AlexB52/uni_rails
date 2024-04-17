@@ -20,8 +20,6 @@ services:
     build: .
     volumes:
       - .:/usr/src/app
-    environment:
-      - APP_HOST=http://uni_rails:3000
     depends_on:
       uni_rails:
         condition: service_healthy
@@ -29,7 +27,7 @@ services:
         condition: service_healthy
     command: ruby app_test.rb
   selenium:
-    image: selenium/standalone-firefox:latest
+    image: selenium/standalone-chrome:latest
     ports:
       - "4444:4444"
       - "7900:7900"
