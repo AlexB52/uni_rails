@@ -88,6 +88,9 @@ GEM
     connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
+    debug (1.9.2)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     drb (2.2.1)
     erubi (1.12.0)
     globalid (1.2.1)
@@ -120,10 +123,16 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.1)
+    nokogiri (1.16.3-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.16.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     psych (5.1.2)
       stringio
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.7.3)
     rack (3.0.10)
     rack-session (2.0.0)
@@ -167,6 +176,9 @@ GEM
       psych (>= 4.0.0)
     reline (0.5.0)
       io-console (~> 0.5)
+    sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86_64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     stringio (3.1.0)
     thor (1.3.1)
     timeout (0.4.1)
@@ -179,11 +191,17 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
+  debug
   minitest (~> 5.0)
+  puma
+  rack-test
   rake (~> 13.0)
+  sqlite3
   uni_rails!
 
 BUNDLED WITH

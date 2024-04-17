@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  uni_rails:
+    build: .
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - APP_HOST=uni_rails:3000
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 3s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    command: ruby app.rb
+  test:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - APP_HOST=http://uni_rails:3000
+    depends_on:
+      uni_rails:
+        condition: service_healthy
+      selenium:
+        condition: service_healthy
+    command: ruby app_test.rb
+  selenium:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4444/status || exit 1"]
+      interval: 3s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
