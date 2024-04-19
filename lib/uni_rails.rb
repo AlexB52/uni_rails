@@ -37,7 +37,7 @@ module UniRails
       end
     end
 
-    UniRails::App::Javascript.default_dependencies = {
+    App::Javascript.dependencies = {
       "turbo" => "https://unpkg.com/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"
     }
   end

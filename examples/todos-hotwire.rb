@@ -12,6 +12,7 @@ gemfile(true) do
 
   gem 'uni_rails'
   gem 'sqlite3', '~> 1.7'
+  gem 'debug'
 end
 
 require 'uni_rails'

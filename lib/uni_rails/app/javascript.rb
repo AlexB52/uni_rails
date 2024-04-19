@@ -7,12 +7,8 @@ module UniRails
         instance.imports
       end
 
-      def self.default_dependencies=(dependencies)
-        instance.default_dependencies = dependencies
-      end
-
-      def self.dependencies=(dependencies)
-        instance.dependencies = instance.default_dependencies.merge(dependencies)
+      def self.dependencies=(deps)
+        instance.dependencies.merge!(deps)
       end
 
       def self.javascript
@@ -23,9 +19,8 @@ module UniRails
         instance.javascript = content
       end
 
-      attr_accessor :dependencies, :default_dependencies, :javascript
+      attr_accessor :dependencies, :javascript
       def initialize
-        @default_dependencies = {}
         @dependencies = {}
         @javascript = ""
       end
