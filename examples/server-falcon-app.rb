@@ -8,7 +8,7 @@ require "bundler/inline"
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails', path: '/Users/alex/projects/uni_rails'
+  gem 'uni_rails'
   gem 'falcon'
 end
 
