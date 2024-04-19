@@ -1,18 +1,20 @@
 # UniRails
 
-UniRails is designed to streamline the process of creating Ruby on Rails applications within a single Ruby file. This approach is ideal for small personal CRUD (Create, Read, Update, Delete) applications or educational purposes, offering a simplified method for demonstrating Rails concepts.
+UniRails makes it easy to build Ruby on Rails apps all within one Ruby file. It's perfect for small personal projects or teaching, as everything is one scroll away.
 
-Our goal is to facilitate educators and writers in crafting concise, illustrative examples for articles or books. Traditional Rails applications require a complex structure even for demonstrating basic concepts, which can be cumbersome and unnecessary. Our library addresses this issue by enabling the quick replication of a Ruby file to instantiate a fully operational Rails app, consolidating all essential components into one file.
+We aim to help educators and writers create clear examples for articles or books. Rails requires a full folder structure to show the basics, which can be a hassle. UniRails cuts through that by letting you spin up a complete Rails app from just one Ruby file — everything you need in one place.
 
-Embrace the convenience of single-file Rails applications with our library, where simplicity meets functionality.
+Check out our [examples](/examples) to understand how the library creates Rails apps from a single file.
 
 ## Installation & Usage
 
 See some examples of how the UniRails library can be used
 
--  [json api](/examples/json_api.rb)
--  [todo app](/examples/todos.rb)
--  [hotwire](/examples/hotwire.rb)
+-  [Todos app (JSON API)](/examples/json_api.rb)
+-  [Todos app (Rails scaffold)](/examples/todos.rb) based off `bin/rails g scaffold todo name completed_at:datetime`
+-  [Todos app (Hotwire)](/examples/hotwire.rb) based off online article: [turbo-rails-101-todo-list](https://www.colby.so/posts/turbo-rails-101-todo-list) by David Colby
+-  [App using Puma server](/examples/server_puma.rb) 
+-  [App using Falcon server](/examples/server_falcon.rb)
 
 ## Development
 
