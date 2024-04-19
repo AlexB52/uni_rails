@@ -3,12 +3,8 @@ module UniRails
     class CSS
       include Singleton
 
-      def self.css=(content)
-        instance.css = content
-      end
-
-      def self.css
-        instance.css
+      class << self
+        delegate :css, :css=, to: :instance
       end
 
       attr_accessor :css

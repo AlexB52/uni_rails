@@ -3,20 +3,11 @@ module UniRails
     class Javascript
       include Singleton
 
-      def self.imports
-        instance.imports
-      end
-
-      def self.dependencies=(deps)
-        instance.dependencies.merge!(deps)
-      end
-
-      def self.javascript
-        instance.javascript
-      end
-
-      def self.javascript=(content)
-        instance.javascript = content
+      class << self
+        delegate  :imports, 
+                  :dependencies, :dependencies=,
+                  :javascript, :javascript=,
+                  to: :instance
       end
 
       attr_accessor :dependencies, :javascript

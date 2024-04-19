@@ -37,9 +37,9 @@ module UniRails
       end
     end
 
-    App::Javascript.dependencies = {
+    App::Javascript.dependencies.merge!(
       "turbo" => "https://unpkg.com/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"
-    }
+    )
   end
 
   def self.rackup_handler=(handler)
@@ -66,7 +66,7 @@ module UniRails
   end
 
   def self.import_maps(dependencies)
-    UniRails::App::Javascript.dependencies = dependencies
+    UniRails::App::Javascript.dependencies.merge! dependencies
   end
 
   def self.javascript(content)
