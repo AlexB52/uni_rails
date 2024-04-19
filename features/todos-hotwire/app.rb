@@ -140,16 +140,18 @@ UniRails.register_view "todos/index.html.erb", <<~'HTML'
       Your todos
     </h2>
     <%= turbo_frame_tag "todos-container", class: "block max-w-2xl w-full bg-gray-100 py-8 px-4 border border-gray-200 rounded shadow-sm" do %>
-      <div class="border-b border-gray-200 w-full">
+      <div id="nav-bar" class="border-b border-gray-200 w-full">
         <ul class="flex space-x-2 justify-center">
           <li>
             <%= link_to "Incomplete",
               todos_path(status: "incomplete"),
+              id: "nav-bar-action-incomplete",
               class: "inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
             %>
           <li>
             <%= link_to "Complete",
               todos_path(status: "complete"),
+              id: "nav-bar-action-complete",
               class: "inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
             %>
           </li>

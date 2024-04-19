@@ -86,12 +86,12 @@ class TestNewTodos < Minitest::Test
   private
 
   def assert_complete(n)
-    click_on 'Complete'
+    find('#nav-bar-action-complete').click
     assert_equal n, all('ul#todos li').length
   end
 
   def assert_incomplete(n)
-    click_on 'Incomplete'
+    find('#nav-bar-action-incomplete').click
     assert_equal n, all('ul#todos li').length
   end
 end
