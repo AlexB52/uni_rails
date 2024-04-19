@@ -10,7 +10,7 @@ gemfile(true) do
   source "https://rubygems.org"
 
   gem 'uni_rails'
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.7'
 end
 
 require 'uni_rails'
