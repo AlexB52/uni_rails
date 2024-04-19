@@ -21,6 +21,7 @@ end
 
 Capybara.default_driver = :selenium_remote_chrome
 Capybara.app_host = APP_HOST
+Capybara.default_max_wait_time = 5
 
 def truncate_tables
   require "sqlite3"
