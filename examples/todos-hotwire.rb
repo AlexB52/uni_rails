@@ -34,7 +34,7 @@ Rails.application.configure do
       Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/channels")
     end
 
-    unless defined?(ActionCable)
+    unless defined?(ActiveJob)
       Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/jobs")
     end
   end

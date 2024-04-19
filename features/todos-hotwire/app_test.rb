@@ -37,6 +37,11 @@ class TestNewTodos < Minitest::Test
     truncate_tables
   end
 
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+
   def test_create_a_new_todo
     visit "/"
 
@@ -75,11 +80,6 @@ class TestNewTodos < Minitest::Test
 
     assert_complete(0)
     assert_incomplete(0)
-  end
-
-  def teardown
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
   end
 
   private
