@@ -2,6 +2,7 @@
 # Run the application
 #   $ ruby todos-hotwire.rb
 
+ENV['SECRET_KEY_BASE'] = 'my_secret_key_base'
 ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-hotwire.sqlite"
 
 require "bundler/inline"
@@ -11,6 +12,7 @@ gemfile(true) do
 
   gem 'uni_rails'
   gem 'sqlite3', '~> 1.7'
+  gem 'debug'
 end
 
 require 'uni_rails'

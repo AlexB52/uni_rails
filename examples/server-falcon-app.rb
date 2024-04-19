@@ -1,12 +1,14 @@
 # Run the application
 #   $ ruby server-falcon-app.rb
 
+ENV['SECRET_KEY_BASE'] = 'my_secret_key_base'
+
 require "bundler/inline"
 
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails', path: '/Users/alex/projects/uni_rails'
+  gem 'uni_rails'
   gem 'falcon'
 end
 
