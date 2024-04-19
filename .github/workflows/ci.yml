@@ -36,6 +36,7 @@ jobs:
           - todos-scaffold
           - todos-hotwire
           - todos-api
+          - server-puma
     steps:
       - uses: actions/checkout@v4
       - name: Set up Ruby

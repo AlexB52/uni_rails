@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     uni_rails (0.2.2)
+      rackup (~> 2.1)
       rails (~> 7.1)
 
 GEM

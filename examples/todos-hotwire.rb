@@ -1,42 +1,30 @@
 # Based on the Hotwire tutorial: https://www.colby.so/posts/turbo-rails-101-todo-list
+# Run the application
+#   $ ruby todos-hotwire.rb
 
-# 1. Initialize the database with
-#     $ ruby todos-hotwire.rb db_setup
-
-# 2. Run the application
-#     $ ruby todos-hotwire.rb
+ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-hotwire.sqlite"
 
 require "bundler/inline"
 
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails'#, path: '/Users/alexbarret/projects/uni_rails'
-  gem 'puma'
-  gem 'debug'
+  gem 'uni_rails'
   gem 'sqlite3'
   gem 'turbo-rails'
 end
 
 require 'uni_rails'
 require 'turbo-rails'
-require "rack/handler/puma"
-require 'debug'
 require 'sqlite3'
 
-
-ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-hotwire.sqlite"
-
-if ARGV[0] == 'db_setup'
-  ActiveRecord::Base.establish_connection
-  ActiveRecord::Schema.define do
-    create_table :todos, force: :cascade do |t|
-      t.string :name
-      t.integer :status, default: 0
-      t.timestamps
-    end
+ActiveRecord::Base.establish_connection
+ActiveRecord::Schema.define do
+  create_table :todos, force: :cascade do |t|
+    t.string :name
+    t.integer :status, default: 0
+    t.timestamps
   end
-  return
 end
 
 # We currently do not support ActionCable and ActiveJob
@@ -46,7 +34,7 @@ Rails.application.configure do
       Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/channels")
     end
 
-    unless defined?(ActionCable)
+    unless defined?(ActiveJob)
       Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/jobs")
     end
   end

@@ -21,6 +21,7 @@ end
 
 Capybara.default_driver = :selenium_remote_chrome
 Capybara.app_host = APP_HOST
+Capybara.default_max_wait_time = 5
 
 def truncate_tables
   require "sqlite3"
@@ -35,6 +36,11 @@ class TestNewTodos < Minitest::Test
 
   def setup
     truncate_tables
+  end
+
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
   end
 
   def test_create_a_new_todo
@@ -75,11 +81,6 @@ class TestNewTodos < Minitest::Test
 
     assert_complete(0)
     assert_incomplete(0)
-  end
-
-  def teardown
-    Capybara.reset_sessions!
-    Capybara.use_default_driver
   end
 
   private
