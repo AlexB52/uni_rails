@@ -9,7 +9,6 @@ services:
       - .:/usr/src/app
     environment:
       - APP_HOST=uni_rails:3000
-      - DATABASE_URL=sqlite3:////usr/src/app/database.sqlite
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
       interval: 3s
