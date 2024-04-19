@@ -14,6 +14,7 @@ See some examples of how the UniRails library can be used
 -  [Todos app (JSON API)](/examples/todos-api.rb)
 -  [Todos app (Rails scaffold)](/examples/todos-scaffold.rb) based off `bin/rails g scaffold todo name completed_at:datetime`
 -  [Todos app (Hotwire)](/examples/todos-hotwire.rb) based off online article: [turbo-rails-101-todo-list](https://www.colby.so/posts/turbo-rails-101-todo-list) by David Colby
+-  [App using StimulusJS](/examples/stimulus-app.rb) 
 -  [App using Puma server](/examples/server-puma-app.rb) 
 -  [App using Falcon server](/examples/server-falcon-app.rb)
 
