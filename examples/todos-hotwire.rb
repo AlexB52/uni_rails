@@ -10,12 +10,10 @@ gemfile(true) do
   source "https://rubygems.org"
 
   gem 'uni_rails'
-  gem 'sqlite3'
-  gem 'turbo-rails'
+  gem 'sqlite3', '~> 1.7'
 end
 
 require 'uni_rails'
-require 'turbo-rails'
 require 'sqlite3'
 
 ActiveRecord::Base.establish_connection
@@ -27,18 +25,7 @@ ActiveRecord::Schema.define do
   end
 end
 
-# We currently do not support ActionCable and ActiveJob
-Rails.application.configure do
-  initializer "turbo.no_action_cable", before: :set_eager_load_paths do
-    unless defined?(ActionCable)
-      Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/channels")
-    end
-
-    unless defined?(ActiveJob)
-      Rails.autoloaders.once.do_not_eager_load("#{Turbo::Engine.root}/app/jobs")
-    end
-  end
-end
+UniRails.enable_turbo_rails!
 
 UniRails::App.routes.append do
   root 'todos#index'
@@ -136,10 +123,6 @@ class TodosController < ActionController::Base
 end
 
 # VIEWS
-
-UniRails.import_maps(
-  "turbo" => "https://unpkg.com/@hotwired/turbo@8.0.4/dist/turbo.es2017-umd.js"
-)
 
 UniRails.javascript <<~JAVASCRIPT
   import * as Turbo from "turbo"
