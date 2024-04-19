@@ -20,7 +20,7 @@ module UniRails
     config.eager_load = true
     config.logger = Logger.new(STDOUT)
     config.log_level = :debug
-    config.secret_key_base = "whatever"
+    config.secret_key_base = ENV.fetch('SECRET_KEY_BASE')
 
     config.after_initialize do
       ActionController::Base.view_paths = Views.view_paths

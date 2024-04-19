@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+if ENV['SECRET_KEY_BASE'].nil?
+  raise StandardError, <<~ERROR
+
+    SECRET_KEY_BASE environment variable is required
+    Provide ENV['SECRET_KEY_BASE'] in your file or export the variable to your profile
+  ERROR
+end
+
 require "rails"
 require_relative "uni_rails/version"
 require_relative "uni_rails/helpers"

@@ -1,6 +1,8 @@
 # Run the application
 #   $ ruby server-falcon-app.rb
 
+ENV['SECRET_KEY_BASE'] = 'my_secret_key_base'
+
 require "bundler/inline"
 
 gemfile(true) do
