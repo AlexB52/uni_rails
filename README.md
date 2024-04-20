@@ -8,7 +8,7 @@ Check out our [examples](/examples) to understand how the library creates Rails 
 
 ## Installation & Usage
 
-See some examples of how the UniRails library can be used
+See some examples of how the UniRails library can be used. Running an example is a easy as `ruby filename.rb`
 
 -  [Hello world](/examples/hello-world.rb)
 -  [Todos app (JSON API)](/examples/todos-api.rb)

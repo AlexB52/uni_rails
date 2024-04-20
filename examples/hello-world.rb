@@ -1,5 +1,3 @@
-# Run the application
-#   $ ruby hello-world.rb
 
 ENV['SECRET_KEY_BASE'] = 'my_secret_key_base'
 

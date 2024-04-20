@@ -1,5 +1,3 @@
-# Run the application
-#   $ ruby todos-api.rb
 
 ENV['SECRET_KEY_BASE'] = 'my_secret_key_base'
 ENV['DATABASE_URL'] = "sqlite3:///#{Dir.pwd}/todos-api.sqlite"
