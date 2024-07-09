@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# require "byebug"
+# byebug
+
+assets_path = File.expand_path('../assets', __dir__)
+
+options = {}
+case ARGV[0]
+when "new"
+  filename = ARGV[1]
+  File.open(filename, 'wb+') do |f|
+    f.write File.read File.join(assets_path, 'templates', 'default.txt')
+  end
+else
+  puts "unknown command"
+  puts "Usage: unirails new <filename>"
+end

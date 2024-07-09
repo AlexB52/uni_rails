@@ -1,0 +1,88 @@
+ENV["SECRET_KEY_BASE"] = "1212312313"
+ENV["DATABASE_URL"] = "sqlite3:///#{__dir__}/database.sqlite"
+
+require "bundler/inline"
+
+gemfile do
+  source "https://www.rubygems.org"
+  gem "uni_rails"
+  gem "sqlite3", "~> 1.7"
+  gem "byebug"
+end
+
+require "uni_rails"
+require "sqlite3"
+require "byebug"
+
+#  ==== ROUTES ====
+UniRails::App.routes.append do
+  root "resource_names#new"
+  resources :resource_names
+end
+
+#  ==== DB SCHEMA ====
+ActiveRecord::Base.establish_connection
+ActiveRecord::Schema.define do
+  create_table :resources, force: :cascade do |t|
+    t.string :title
+  end
+end
+
+#  ==== MODELS ====
+class Resource < ActiveRecord::Base
+end
+
+#  ==== SEEDS ====
+# Create your existing records here
+
+#  ==== CONTROLLERS ====
+class ResourceNamesController < ActionController::Base
+  layout 'application'
+
+  def new
+  end
+
+  def create
+  end
+end
+
+#  ==== IMPORT MAPS ====
+UniRails.import_maps(
+  'stimulus' => 'https://unpkg.com/@hotwired/stimulus/dist/stimulus.js'
+)
+
+
+#  ==== JAVASCRTIP ====
+UniRails.javascript <<~JAVASCRIPT
+  import { Application, Controller } from "stimulus"
+  window.Stimulus = Application.start()
+
+  Stimulus.register("hello", class extends Controller {
+    connect() {
+      console.log("hello world")
+    }
+  })
+
+JAVASCRIPT
+
+#  ==== CSS ====
+UniRails.css <<~CSS
+  html { background-color:#EEE; }
+  body { width:500px; height:700px; margin:auto;
+    background-color:white; padding:1rem;
+  }
+  form {
+    label { display: block; }
+    input[type="submit"] { display: block; margin-top:1rem;  }
+    .field_with_errors { color:red;  display:inline; }
+  }
+CSS
+
+#  ==== VIEWS ====
+UniRails.register_view "resource_names/new.html.erb", <<~HTML
+HTML
+
+UniRails.register_view "resource_names/show.html.erb", <<~HTML
+HTML
+
+UniRails.run(Port: 3000)

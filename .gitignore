@@ -10,3 +10,4 @@ examples/*.sqlite*
 **/*.sqlite*
 log/*
 **/uni_rails.gem
+.byebug_history
