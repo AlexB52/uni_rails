@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Uncomment to register a new dependency of your gem
-  spec.add_dependency "rails", "~> 7.1"
+  spec.add_dependency "rails", "~> 7.1.0"
   spec.add_dependency "rackup", "~> 2.1"
   spec.add_dependency "turbo-rails", "~> 2.0"
 
