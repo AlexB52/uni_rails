@@ -5,7 +5,7 @@ require "bundler/inline"
 
 gemfile do
   source "https://www.rubygems.org"
-  gem "uni_rails"
+  gem "uni_rails", "0.4.1"
   gem "sqlite3", "~> 1.7"
   gem "byebug"
 end
@@ -86,3 +86,4 @@ UniRails.register_view "resource_names/show.html.erb", <<~HTML
 HTML
 
 UniRails.run(Port: 3000)
+# UniRails.run(Host: '0.0.0.0', Port: 3000) # when run in a docker container
