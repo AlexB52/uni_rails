@@ -15,7 +15,7 @@ require 'rackup/handler/falcon'
 
 UniRails.rackup_handler = Rackup::Handler::Falcon
 
-UniRails::App.routes.append do
+UniRails.routes do
   root 'pages#index'
 end
 

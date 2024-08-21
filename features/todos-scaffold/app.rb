@@ -12,7 +12,7 @@ ActiveRecord::Schema.define do
   end
 end
 
-UniRails::App.routes.append do
+UniRails.routes do
   root 'todos#index'
   resources :todos
 end

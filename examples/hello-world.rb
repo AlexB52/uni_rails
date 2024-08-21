@@ -10,7 +10,7 @@ end
 
 require 'uni_rails'
 
-UniRails::App.routes.append do
+UniRails.routes do
   root 'pages#index'
 end
 

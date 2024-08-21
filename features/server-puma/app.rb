@@ -3,7 +3,7 @@ require 'rack/handler/puma'
 
 UniRails.rackup_handler = Rack::Handler::Puma
 
-UniRails::App.routes.append do
+UniRails.routes do
   root 'pages#index'
 end
 

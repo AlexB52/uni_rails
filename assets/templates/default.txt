@@ -15,7 +15,7 @@ require "sqlite3"
 require "byebug"
 
 #  ==== ROUTES ====
-UniRails::App.routes.append do
+UniRails.routes do
   root "resource_names#new"
   resources :resource_names
 end
