@@ -11,3 +11,4 @@ examples/*.sqlite*
 log/*
 **/uni_rails.gem
 .byebug_history
+.ruby-version
