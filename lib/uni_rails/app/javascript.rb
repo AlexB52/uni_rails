@@ -4,7 +4,7 @@ module UniRails
       include Singleton
 
       class << self
-        delegate  :imports, 
+        delegate  :imports,
                   :dependencies, :dependencies=,
                   :javascript, :javascript=,
                   to: :instance
