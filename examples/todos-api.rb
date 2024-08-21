@@ -23,7 +23,7 @@ ActiveRecord::Schema.define do
   end
 end
 
-UniRails::App.routes.append do
+UniRails.routes do
   resources :todos do
     put :complete, on: :member
   end

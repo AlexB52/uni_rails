@@ -8,19 +8,23 @@ require "action_controller/railtie"
 # require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
-# require "action_view/railtie"
+require "action_view/railtie"
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 require "action_view/testing/resolvers"
 
 module UniRails
   class App < Rails::Application
-    config.load_defaults 7.1
+    config.load_defaults 7.2
 
-    config.eager_load = true
+    # config.eager_load = true
     config.logger = Logger.new(STDOUT)
     config.log_level = :debug
     config.secret_key_base = ENV.fetch('SECRET_KEY_BASE')
+
+    routes.draw do
+      resources :users
+    end
 
     config.after_initialize do
       ActionController::Base.view_paths = Views.view_paths

@@ -42,6 +42,15 @@ module UniRails
     )
   end
 
+  def self.routes(&block)
+    App.initializer :add_uni_routes, before: :add_internal_routes do |app|
+      app.routes.prepend do
+        get "/rails/info/routes" => "rails/info#routes", internal: true
+      end
+      app.routes.prepend(&block)
+    end
+  end
+
   def self.rackup_handler=(handler)
     @@rackup_handler = handler
   end

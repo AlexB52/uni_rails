@@ -27,7 +27,7 @@ end
 
 UniRails.enable_turbo_rails!
 
-UniRails::App.routes.append do
+UniRails.routes do
   root 'todos#index'
   resources :todos do
     patch :change_status, on: :member
