@@ -3,4 +3,4 @@
 bundle install
 bundle exec rake build
 ls -t pkg | head -n1 | xargs -I {} mv pkg/{} features/server-puma/uni_rails.gem
-docker-compose -f features/server-puma/docker-compose.yml up --build --exit-code-from test
+docker compose -f features/server-puma/docker-compose.yml up --build --exit-code-from test
