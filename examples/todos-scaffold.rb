@@ -7,7 +7,7 @@ require "bundler/inline"
 gemfile(true) do
   source "https://rubygems.org"
 
-  gem 'uni_rails'
+  gem 'uni_rails', '~> 0.5.0'
   gem 'sqlite3', '~> 1.7'
   gem 'jbuilder' # jbuilder allows the .jbuilder extension for views
 end

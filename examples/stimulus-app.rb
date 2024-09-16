@@ -5,7 +5,7 @@ require "bundler/inline"
 
 gemfile(true) do
   source "https://rubygems.org"
-  gem 'uni_rails'
+  gem 'uni_rails', '~> 0.5.0'
 end
 
 require 'uni_rails'
